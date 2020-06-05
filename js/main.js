@@ -5,13 +5,19 @@
 // 1). Присваиваем значения переменным:
 
 let money = 10000;
+console.log(money);
 let income = 'фриланс';
+console.log(income);
 let addExpenses = 'коммуналка, автомобиль, кредит';
+console.log(addExpenses);
 let deposit = true;
+console.log(deposit);
 let mission = 600000;
+console.log(mission);
 let period = 12;
+console.log(period);
 
-// 2). Выводим в консль значения:
+// 2). Выводим в консль тип переменных:
 
 console.log(typeof money);
 console.log(typeof income);
