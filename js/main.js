@@ -29,13 +29,16 @@ console.log(addExpenses.length);
 
     // --- привел переменную addExpenses к нижнему регистру
 
-let lower = addExpenses. toLowerCase();
-addExpenses = lower;
+// let lower = addExpenses. toLowerCase();
+// addExpenses = lower;
+// console.log(addExpenses);
+
+addExpenses = addExpenses. toLowerCase();
 console.log(addExpenses);
 
     // --- вывел массив в консоль
 
-console.log(lower.split(', '));
+console.log(addExpenses.split(', '));
 console.log(addExpenses);
 
 console.log('Период равен ' + period + ' месяцев');
