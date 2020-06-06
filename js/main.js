@@ -8,7 +8,7 @@ let money = 10000;
 console.log(money);
 let income = 'фриланс';
 console.log(income);
-let addExpenses = 'коммуналка, автомобиль, кредит';
+let addExpenses = 'Коммуналка, Автомобиль, Кредит, Медицина, Обучение';
 console.log(addExpenses);
 let deposit = true;
 console.log(deposit);
@@ -26,8 +26,17 @@ console.log(typeof deposit);
     // --- -работаем с addExpenses
 
 console.log(addExpenses.length);
-console.log(addExpenses.toLowerCase());
-console.log(addExpenses.split(', '));
+
+    // --- привел переменную addExpenses к нижнему регистру
+
+let lower = addExpenses. toLowerCase();
+addExpenses = lower;
+console.log(addExpenses);
+
+    // --- вывел массив в консоль
+
+console.log(lower.split(', '));
+console.log(addExpenses);
 
 console.log('Период равен ' + period + ' месяцев');
 console.log('Цель заработать ' + mission + ' рублей');
@@ -37,7 +46,3 @@ console.log('Цель заработать ' + mission + ' рублей');
 let budgetDay = money;
 money /= 30;
 console.log('budgetDay: ', money);
-
-// 3). Проверено! Ошибок в консоли нет.
-
-// 4). Добавляем ветку lesson2 на GitHub.
