@@ -49,7 +49,6 @@ console.log('budgetDay: ', money);*/
 
 // -----------Начало 3-го задания-------------
 
-
 let mission = +prompt('Сколько вы хотите накопить денег?');
 console.log('Цель накопить ' +mission+ ' рублей');
 
@@ -59,7 +58,7 @@ console.log('Месячный доход: ' +money+ ' рублей');
 let addExpenses = prompt('Пересислите возможные расходы за месяц через запятую');
 console.log(addExpenses.split(', '));
 
-let deposit = prompt('Есть ли у вас депозит в банке?');
+let deposit = confirm('Есть ли у вас депозит в банке?');
 console.log(deposit);
 
 let expenses1 = prompt('Введите обязательную статью расходов', 'текст');
@@ -72,6 +71,7 @@ let amount2 = prompt('Во сколько вам обойдется врорая
 let budgetMonth = money - amount1 - amount2;
 console.log('Ваш бюджет на месяц: ' +budgetMonth+ 'р');
 
+let period = mission / budgetMonth;
 console.log('Цель будет достигнута за: ' +Math.ceil(period)+ ' месяцев'); //округлить в большую сторону Math.ceil(число)
 
 let budgetDay = budgetMonth / 30;
