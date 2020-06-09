@@ -1,16 +1,14 @@
 // ------------Lesson 3-------------
 'use strict'
 
-<<<<<<< Updated upstream
 
+ //округлить в большую сторону Math.ceil(число)
 
 // let income = 'фриланс';  //дополнительныый доход
 
 // let addExpenses = 'Коммуналка, Автомобиль, Кредит, Медицина, Обучение'; //дополнительные расходы
 
 // let deposit = true; //булевое
-
-
 
 // -----------Начало 3-го задания-------------
 
@@ -37,12 +35,11 @@ let amount2 = prompt('Во сколько вам обойдется врорая
 let budgetMonth = money - amount1 - amount2;
 console.log('Ваш бюджет на месяц: ' +budgetMonth+ 'р');
 
-let budgetDay = budgetMonth / 30;
-console.log('Ваш бюджет на день: ' +budgetDay+ 'р');
-
-
 let period = mission / budgetMonth;
-console.log('Цель будет достигнута за: ' + period + ' месяцев');
+console.log('Цель будет достигнута за: ' +Math.ceil(period)+ ' месяцев'); //округлить в большую сторону Math.ceil(число)
+
+let budgetDay = budgetMonth / 30;
+console.log('Ваш бюджет на день: ' +Math.floor(budgetDay)+ 'р'); //округлить в меньшую сторону Math.floor(число)
 
 // console.log('У вас высокий уровень дохода');
 
