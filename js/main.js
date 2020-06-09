@@ -1,6 +1,7 @@
 // ------------Lesson 3-------------
 'use strict'
 
+<<<<<<< Updated upstream
 
 
 // let income = 'фриланс';  //дополнительныый доход
@@ -44,3 +45,4 @@ let period = mission / budgetMonth;
 console.log('Цель будет достигнута за: ' + period + ' месяцев');
 
 // console.log('У вас высокий уровень дохода');
+
