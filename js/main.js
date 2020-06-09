@@ -1,16 +1,4 @@
-// ------------Lesson 3-------------
 'use strict'
-
-
- //округлить в большую сторону Math.ceil(число)
-
-// let income = 'фриланс';  //дополнительныый доход
-
-// let addExpenses = 'Коммуналка, Автомобиль, Кредит, Медицина, Обучение'; //дополнительные расходы
-
-// let deposit = true; //булевое
-
-// -----------Начало 3-го задания-------------
 
 
 let mission = +prompt('Сколько вы хотите накопить денег?');
@@ -41,5 +29,12 @@ console.log('Цель будет достигнута за: ' +Math.ceil(period)
 let budgetDay = budgetMonth / 30;
 console.log('Ваш бюджет на день: ' +Math.floor(budgetDay)+ 'р'); //округлить в меньшую сторону Math.floor(число)
 
-// console.log('У вас высокий уровень дохода');
-
+if (budgetDay >= 1200){
+  console.log('У вас высокий уровень дохода')
+} else if (budgetDay >=600){
+  console.log('У вас средний уровень дохода')
+} else if (budgetDay < 600){
+  console.log('К сожалению у вас уровень дохода ниже среднего”')
+} else if (budgetDay <= 0){
+  console.log('Что то пошло не так')
+};
