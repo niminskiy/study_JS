@@ -1,6 +1,7 @@
 // ------------Lesson 3-------------
 'use strict'
 
+<<<<<<< Updated upstream
 
 
 // let income = 'фриланс';  //дополнительныый доход
@@ -44,3 +45,20 @@ let period = mission / budgetMonth;
 console.log('Цель будет достигнута за: ' + period + ' месяцев');
 
 // console.log('У вас высокий уровень дохода');
+=======
+// let income = 10; 
+// let addExpenses = 20; 
+// let deposit = 30; 
+// let mission = 40; 
+// let period = 4;
+
+
+//alert ('Hello!');
+
+//console.log('income =', income);
+
+// confirm('Сколько лет?');
+//let question = confirm('Сколько лет?');
+let question2 = prompt('Сколько тебе лет?', '20');
+console.log(question2);
+>>>>>>> Stashed changes
