@@ -2,10 +2,10 @@
 
 
 let mission = +prompt('Сколько вы хотите накопить денег?');
-//console.log('Цель накопить ' +mission+ ' рублей');
+console.log('Цель накопить ' +mission+ ' рублей');
 
 let money = +prompt('Какой у вас месячный доход?');
-//console.log('Месячный доход: ' +money+ ' рублей');
+console.log('Месячный доход: ' +money+ ' рублей');
 
 let addExpenses = prompt('Пересислите возможные расходы за месяц через запятую');
 console.log(addExpenses.split(', '));
@@ -13,16 +13,16 @@ console.log(addExpenses.split(', '));
 let deposit = prompt('Есть ли у вас депозит в банке?');
 
 
-let expenses1 = prompt('Введите обязательную статью расходов', 'текст');
-let amount1 = prompt('Во сколько вам обойдется первая статья?', 'сумма');
+let expenses1 = prompt('Введите обязательную статью расходов', 'ипотека');
+let expenses1Amount = prompt('Во сколько вам обойдется первая статья?', '12000');
 
 
-let expenses2 = prompt('Введите обязательную статью расходов', 'текст');
-let amount2 = prompt('Во сколько вам обойдется врорая статья?', 'сумма');
+let expenses2 = prompt('Введите обязательную статью расходов', 'кредит');
+let expenses2Amount = prompt('Во сколько вам обойдется врорая статья?', '14000');
 
 
-// let budgetMonth = money - amount1 - amount2;
-// console.log('Ваш бюджет на месяц: ' +budgetMonth+ 'р');
+let budgetMonth = money - amount1 - amount2;
+console.log('Ваш бюджет на месяц: ' +budgetMonth+ 'р');
 
 
 let period = mission / accumulatedMonth;
@@ -44,24 +44,32 @@ if (budgetDay >= 1200){
 }
 
 
-function getExpensesMonth(){
+let showTypeof = function(item){
+  console.log(typeof item);
+};
+showTypeof(money);
+showTypeof(income);
+showTypeof(deposit);
 
-}
-console.log(getExpensesMonth());
+
+let getExpensesMonth = function(){
+  return expenses1Amount + expenses2Amount;
+};
+console.log('Расходы на месяц: ' + getExpensesMonth());
 
 
-function getAccumulatedMonth(){
-  
-}
+let getAccumulatedMonth = function(){
+  return money - getExpensesMonth();
+};
 
 
 let accumulatedMonth = getAccumulatedMonth();
 
 
-function getTargetMonth(){
-  
+let getTargetMonth = function(){
+  return mission / accumulatedMonth;
 }
-console.log(getTargetMonth())
+console.log(getTargetMonth());
 
 
 
