@@ -7,10 +7,10 @@ console.log('Цель накопить ' +mission+ ' рублей');
 let money = +prompt('Какой у вас месячный доход?');
 console.log('Месячный доход: ' +money+ ' рублей');
 
-let addExpenses = prompt('Пересислите возможные расходы за месяц через запятую');
-console.log(addExpenses.split(', '));
+// let addExpenses = prompt('Пересислите возможные расходы за месяц через запятую');
+// console.log(addExpenses.split(', '));
 
-let deposit = prompt('Есть ли у вас депозит в банке?');
+let deposit = confirm('Есть ли у вас депозит в банке?');
 
 
 let expenses1 = prompt('Введите обязательную статью расходов', 'ипотека');
@@ -37,7 +37,7 @@ showTypeof(deposit);
 let getExpensesMonth = function(){
   return expenses1Amount + expenses2Amount;
 };
-console.log('Расходы на месяц: ' + getExpensesMonth());
+//console.log('Расходы на месяц: ' +getExpensesMonth());
 
 
 let getAccumulatedMonth = function(){
@@ -47,17 +47,17 @@ let getAccumulatedMonth = function(){
 
 let accumulatedMonth = getAccumulatedMonth();
 
+
 let period = mission / accumulatedMonth;
 console.log('Цель будет достигнута за: ' +Math.ceil(period)+ ' месяцев');
 
+
 let getTargetMonth = function(){
-  return period;
+  return mission / accumulatedMonth;
 }
-console.log(getTargetMonth());
 
 
 let budgetDay = accumulatedMonth / 30;
-console.log('Ваш бюджет на день: ' +Math.floor(budgetDay)+ 'р');
 
 
 let getStatusIncome = function(){
@@ -71,7 +71,7 @@ let getStatusIncome = function(){
     console.log('Что то пошло не так');
   }
 };
-
+getStatusIncome();
 
 
 /*1) Объявить функцию getExpensesMonth. Функция возвращает сумму всех обязательных расходов за месяц
