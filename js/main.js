@@ -24,11 +24,12 @@ let period;
 
 
 let start = function() {
-  money = prompt('Ваш месячный доход?');
-
-  while (!isNumber(money)) {
+  
+  do{
     money = prompt('Ваш месячный доход?');
   }
+  while (!isNumber(money));
+
 };
 start();
 console.log('Месячный доход: ' +money+ ' рублей');
@@ -49,38 +50,47 @@ let getExpensesMonth = function(){
 
       if (i === 0) {
         expenses1 = prompt('Введите обязательную статью расходов');
+
       } else if (i === 1) {
         expenses2 = prompt('Введите обязательную статью расходов');
       }
 
-    sum += +prompt('Во сколько это обойдется');
+    do{
+      sum = prompt('Во сколько это обойдется?');
+    }
+    while (!isNumber(sum));
   }
   return sum;
 };
 
 let expensesAmount = getExpensesMonth();
-console.log ('Расходы на месяц: ' + expensesAmount);
+console.log ('Расходы на месяц: ' +expensesAmount+ ' рублей');
 
 
 let getAccumulatedMonth = function(){
   return money - expensesAmount;
 };
 
-
 let accumulatedMonth = getAccumulatedMonth();
 
 
-period = mission / accumulatedMonth;
-console.log('Цель будет достигнута за: ' +Math.ceil(period)+ ' месяцев');
-
-
 let getTargetMonth = function(){
+
   return mission / accumulatedMonth;
 };
 
 
-let budgetDay = accumulatedMonth / 30;
+period = mission / accumulatedMonth;
 
+
+if (getTargetMonth > 0) {
+  console.log('Цель будет достигнута за: ' +Math.ceil(period)+ ' месяцев');
+} else {
+  console.log('Цель будет не достигнута');
+}
+
+
+let budgetDay = accumulatedMonth / 30;
 
 let getStatusIncome = function(){
   if (budgetDay >= 1200){
@@ -94,3 +104,8 @@ let getStatusIncome = function(){
   }
 };
 getStatusIncome();
+
+
+// 1) Переписать функцию start циклом do while
+// 2) Добавить проверку что введённые данные являются числом, которые мы получаем на вопрос 'Во сколько это обойдется?’ в функции  getExpensesMonth
+// 3) Если getTargetMonth возвращает отрицательное значение, то вместо “Цель будет достигнута” выводить “Цель не будет достигнута”
