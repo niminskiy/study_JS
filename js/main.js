@@ -45,7 +45,7 @@ showTypeof(deposit);
 
 let getExpensesMonth = function(){
   let sum = 0;
-
+  let temp;
   for (let i = 0; i < 2; i++) {
 
       if (i === 0) {
@@ -56,11 +56,14 @@ let getExpensesMonth = function(){
       }
 
     do{
-      sum = prompt('Во сколько это обойдется?');
+      
+      temp = prompt('Во сколько это обойдется?');
     }
-    while (!isNumber(sum));
+    while (!isNumber(temp));
+    sum += +temp;
   }
   return sum;
+
 };
 
 let expensesAmount = getExpensesMonth();
@@ -68,6 +71,7 @@ console.log ('Расходы на месяц: ' +expensesAmount+ ' рублей'
 
 
 let getAccumulatedMonth = function(){
+
   return money - expensesAmount;
 };
 
@@ -79,11 +83,11 @@ let getTargetMonth = function(){
   return mission / accumulatedMonth;
 };
 
+period = getTargetMonth();
 
-period = mission / accumulatedMonth;
 
 
-if (getTargetMonth > 0) {
+if (period > 0) {
   console.log('Цель будет достигнута за: ' +Math.ceil(period)+ ' месяцев');
 } else {
   console.log('Цель будет не достигнута');
@@ -104,8 +108,3 @@ let getStatusIncome = function(){
   }
 };
 getStatusIncome();
-
-
-// 1) Переписать функцию start циклом do while
-// 2) Добавить проверку что введённые данные являются числом, которые мы получаем на вопрос 'Во сколько это обойдется?’ в функции  getExpensesMonth
-// 3) Если getTargetMonth возвращает отрицательное значение, то вместо “Цель будет достигнута” выводить “Цель не будет достигнута”
