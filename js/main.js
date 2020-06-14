@@ -55,27 +55,25 @@ let appData = {
   },
   getTargetMonth: function() {
     return appData.mission / appData.getAccumulatedMonth();
-  }, 
+  },
+  
   getStatusIncome: function() {
 
-    let budgetDay = appData.getAccumulatedMonth / 30;
-    console.log(typeof budgetDay);
+    let budgetDay = 1400;
 
-    if (budgetDay >= 1200) {
-      console.log(budgetDay);
+    if (appData.budgetDay >= 1200) {
       console.log('У вас высокий уровень дохода');
-    } else if (budgetDay >=600) {
+    } else if (appData.budgetDay >=600) {
       console.log('У вас средний уровень дохода');
-    } else if (budgetDay < 600) {
+    } else if (appData.budgetDay < 600) {
       console.log('К сожалению у вас уровень дохода ниже среднего');
-    } else if (budgetDay <= 0) {
+    } else if (appData.budgetDay <= 0) {
       console.log('Что то пошло не так');
     }
   }
-  
 };
-appData.getStatusIncome();
-appData.asking();
+//appData.getStatusIncome();
+//appData.asking();
 
 let mission = prompt('Сколько вы хотите накопить денег?');
 console.log('Цель накопить ' +mission+ ' рублей');
