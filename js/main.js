@@ -5,16 +5,18 @@ let isNumber = function(n) {
 };
 
 
-let money,
-    start = function() {
-      money = prompt('Ваш месячный доход?');
+let money;
 
-      while (!isNumber(money)) {
-        money = prompt('Ваш месячный доход?');
-      }
-    };
-    start();
-    console.log('Ваш месячный доход ' +money+ ' рублей');
+let start = function() {
+  money = prompt('Ваш месячный доход?');
+
+  while (!isNumber(money)) {
+    money = prompt('Ваш месячный доход?');
+  }
+};
+start();
+console.log('Ваш месячный доход ' +money+ ' рублей');
+
 
 let appData = {
   income: {},
@@ -29,6 +31,7 @@ let appData = {
         appData.addExpenses = addExpenses.toLowerCase().split(', ');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
   },
+
   budget: money,
   budgetMonth: 0,
   expensesMonth: 0,
@@ -50,30 +53,31 @@ let appData = {
     }
     return sum;
   },
+
   getAccumulatedMonth: function() {
     return money - appData.expensesAmount;
   },
+  
   getTargetMonth: function() {
     return appData.mission / appData.getAccumulatedMonth();
   },
   
   getStatusIncome: function() {
 
-    let budgetDay = 1400;
+    let budgetDay = appData.getAccumulatedMonth() / 30;
 
-    if (appData.budgetDay >= 1200) {
+    if (budgetDay >= 1200) {
       console.log('У вас высокий уровень дохода');
-    } else if (appData.budgetDay >=600) {
+    } else if (budgetDay >=600) {
       console.log('У вас средний уровень дохода');
-    } else if (appData.budgetDay < 600) {
+    } else if (budgetDay < 600) {
       console.log('К сожалению у вас уровень дохода ниже среднего');
-    } else if (appData.budgetDay <= 0) {
+    } else if (budgetDay <= 0) {
       console.log('Что то пошло не так');
     }
   }
 };
-//appData.getStatusIncome();
-//appData.asking();
+appData.asking();
 
 let mission = prompt('Сколько вы хотите накопить денег?');
 console.log('Цель накопить ' +mission+ ' рублей');
@@ -83,4 +87,6 @@ console.log ('Расходы на месяц: ' + appData.expensesAmount);
 
 appData.period = mission / appData.getAccumulatedMonth();
 console.log('Цель будет достигнута за: ' +Math.ceil(appData.period)+ ' месяцев');
+
+appData.getStatusIncome();
 
