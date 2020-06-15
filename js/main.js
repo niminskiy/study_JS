@@ -19,10 +19,13 @@ start();
 let appData = {
   income: {},
   addIncome: [],
+  expensesMonth: 0,
   expenses: {}, // основные расходы
   addExpenses: [], // дополнительные расходы
   deposit: false,
   period: 3,
+  budgetMonth: 0,
+  budgetDay: 0,
   mission: function() {
     prompt('Сколько вы хотите накопить денег?'); 
     console.log('Цель накопить ' +appData.mission+ ' рублей');
@@ -37,25 +40,25 @@ let appData = {
       let tempText = prompt('Введите обязательную статью расходов');
       let tempMoney = +prompt('Во сколько это обойдется');
       appData.expenses[tempText] = tempMoney;
-
+      console.log(appData.expenses);
     }
 
   },
   getExpensesMonth: function() {
-    
-    let expensesMonth = 0;
+
     for (let key in appData.expenses) {
       appData.expensesMonth += appData.expenses[key];
     }
-    console.log ('Расходы на месяц: ' + expensesMonth + ' рублей');
+    console.log ('Расходы на месяц: ' + appData.expensesMonth + ' рублей');
+
   },
 
   getBudget: function() {
     
     appData.budgetMonth = money - appData.expensesMonth;
-    console.log(appData.bugetMonth);
+    console.log(appData.budgetMonth);
   
-    appData.budgetDay = appData.expensesMonth / 30;
+    appData.budgetDay = appData.budgetMonth / 30;
     console.log(appData.budgetDay);
       
   },
@@ -85,11 +88,9 @@ appData.getStatusIncome();
 
 //console.log('Цель будет достигнута за: ' +Math.ceil(appData.period)+ ' месяцев');
 
-
-
-for (let key in appData) {
-console.log('Наша программа включает в себя данные:  ' + key + ': ' + appData[key]);
-}
+// for (let key in appData) {
+// console.log('Наша программа включает в себя данные:  ' + key + ': ' + appData[key]);
+// }
 
 /*9) getAccumulatedMonth переименовать в getBudget. Этот метод будет высчитывать значения свойств budgetMonth и budgetDay, чтобы вычислить значения используем только свойства объекта (никаких внешних переменных)
 
