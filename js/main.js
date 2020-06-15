@@ -72,7 +72,12 @@ let appData = {
     
     appData.budgetMonth = money - appData.expensesMonth;
   
+<<<<<<< Updated upstream
     appData.budgetDay = +Math.floor(appData.budgetMonth / 30);
+=======
+    appData.budgetDay = Math.ceil(appData.budgetMonth) / 30;
+    console.log(appData.budgetDay);
+>>>>>>> Stashed changes
       
   },
 
