@@ -24,6 +24,7 @@ let appData = {
   addExpenses: [], // дополнительные расходы
   deposit: false,
   period: 3,
+  budget: money,
   budgetMonth: 0,
   budgetDay: 0,
   mission: function() {
@@ -55,6 +56,9 @@ let appData = {
       appData.expensesMonth += appData.expenses[key];
     }
     console.log ('Расходы на месяц: ' + appData.expensesMonth + ' рублей');
+
+  },
+  getAccumulatedMonth: function() {
 
   },
   getTargetMonth: function() {
