@@ -110,7 +110,6 @@ let appData = {
   calcSavedMoney: function() {
     return appData.budgetMonth * appData.period;
   }
-  
 };
 appData.asking();
 appData.getExpensesMonth();
