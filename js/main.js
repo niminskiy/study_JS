@@ -5,17 +5,17 @@ let isNumber = function(num) {
 };
 
 let isString = function(str) {
-  return str.trim() !== '' && !isNumber(str);
+  return typeof str === 'string' && str.trim() !== '' && !isNumber(str);
 };
 
 let money;
 
 let start = function() {
   money = prompt('Ваш месячный доход?');
-
-  while (!isNumber(money)) {
+  do {
     money = prompt('Ваш месячный доход?');
   }
+  while (!isNumber(money));
 };
 start();
 
@@ -70,23 +70,27 @@ let appData = {
     for (let i = 0; i < 2; i++) {
       
       let itemExpenses;
-      while (!isString(itemExpenses)) {
+      do {
         itemExpenses = prompt('Введите обязательную статью расходов');
       }
+      while (!isString(itemExpenses));
 
       let cashExpenses;
-      while (!isNumber(cashExpenses)) {
+      do {
         cashExpenses = prompt('Во сколько это обойдется?');
       }
-    }
-    
+      while (!isNumber(cashExpenses));
 
+      appData.expenses[itemExpenses] = cashExpenses;
+    }
+    console.log(appData.expenses);
   },
+
   getExpensesMonth: function() {
     for (let key in appData.expenses) {
-      appData.expensesMonth += +appData.expensesMonth;
+      appData.expenses += +appData.expenses;
     }
-    console.log ('Расходы на месяц: ' + appData.expensesMonth + ' рублей');
+    console.log ('Расходы на месяц: ' + appData.expenses + ' рублей');
 
   },
   getBudget: function() {
@@ -133,14 +137,14 @@ let appData = {
   }
 };
 appData.asking();
-appData.getExpensesMonth();
+//appData.getExpensesMonth();
 appData.getBudget();
 appData.getTargetMonth();
 appData.getStatusIncome();
-appData.getInfoDeposit();
+//appData.getInfoDeposit();
 
 
-console.log(appData.expensesMonth);
+//console.log(appData.expensesMonth);
 
 
 // for (let key in appData) {
