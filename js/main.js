@@ -5,7 +5,7 @@ let isNumber = function(num) {
 };
 
 let isString = function(str) {
-  return typeof str === 'string' && str.trim() !== '' && !isNumber(str);
+  return str.trim() !== '' && !isNumber(str);
 };
 
 let money;
@@ -42,20 +42,28 @@ let appData = {
     if(confirm('Есть ли у вас дополнительный затаботок?')) {
       
       let itemIncome;
-      while (!isString(itemIncome)) {
+
+      do { 
         itemIncome = prompt('Какой у вас дополнительный заработок?');
-      }
+        }
+
+      while (!isString(itemIncome)); 
+        
+      
       
       let cashIncome;
-      while (!isNumber(cashIncome)) {
-        cashIncome = +prompt('Сколько в месяц вы на этом зарабатываете?');
+
+      do {
+        cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?');
       }
-      appData.income[itemIncome] = cashIncome;
+      while (!isNumber(cashIncome));
+      
+      appData.income[itemIncome] = +cashIncome;
     }
 
     let addExpenses = prompt('Пересислите возможные расходы через запятую');
     appData.addExpenses = addExpenses.toLowerCase().split(', ');
-    console.log(appData.addExpenses);
+    console.log(appData.addExpenses); //join
 
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
@@ -71,6 +79,7 @@ let appData = {
         cashExpenses = prompt('Во сколько это обойдется?');
       }
     }
+    
 
   },
   getExpensesMonth: function() {
@@ -86,8 +95,10 @@ let appData = {
   
   },
   getTargetMonth: function() {
-    appData.period = appData.period;
-    console.log('Цель будет достигнута за: ' + Math.ceil(appData.period) + ' месяцев');
+    return appData.mission / appData.budgetMonth;
+
+
+    //console.log('Цель будет достигнута за: ' + Math.ceil(appData.period) + ' месяцев');
 
   },
   getAccumulatedMonth: function() {
