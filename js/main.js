@@ -11,7 +11,7 @@ let isString = function(str) {
 let money;
 
 let start = function() {
-  money = prompt('Ваш месячный доход?');
+  
   do {
     money = prompt('Ваш месячный доход?');
   }
@@ -45,11 +45,9 @@ let appData = {
 
       do { 
         itemIncome = prompt('Какой у вас дополнительный заработок?');
-        }
-
+      }
       while (!isString(itemIncome)); 
         
-      
       
       let cashIncome;
 
@@ -63,7 +61,7 @@ let appData = {
 
     let addExpenses = prompt('Пересислите возможные расходы через запятую');
     appData.addExpenses = addExpenses.toLowerCase().split(', ');
-    console.log(appData.addExpenses); //join
+    console.log(appData.addExpenses); // join
 
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
@@ -86,13 +84,13 @@ let appData = {
     console.log(appData.expenses);
   },
 
-  getExpensesMonth: function() {
-    for (let key in appData.expenses) {
-      appData.expenses += +appData.expenses;
-    }
-    console.log ('Расходы на месяц: ' + appData.expenses + ' рублей');
+  // getExpenses: function() {
+  //   for (let key in appData.expenses) {
+  //     appData.expenses += +appData.expenses;
+  //   }
+  //   console.log ('Расходы на месяц: ' + appData.expenses + ' рублей');
 
-  },
+  // },
   getBudget: function() {
     appData.budgetMonth = appData.budget - appData.expensesMonth;
     appData.budgetDay = Math.floor(appData.budgetMonth / 30);
@@ -138,9 +136,9 @@ let appData = {
 };
 appData.asking();
 //appData.getExpensesMonth();
-appData.getBudget();
-appData.getTargetMonth();
-appData.getStatusIncome();
+//appData.getBudget();
+//appData.getTargetMonth();
+//appData.getStatusIncome();
 //appData.getInfoDeposit();
 
 
