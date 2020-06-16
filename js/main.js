@@ -1,9 +1,12 @@
 'use strict';
 
-let isNumber = function(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
+let isNumber = function(num) {
+  return !isNaN(parseFloat(num)) && isFinite(num);
 };
 
+let isString = function(str) {
+  return str.trim() !== '' && !isNumber(str);
+};
 
 let money;
 
@@ -37,35 +40,51 @@ let appData = {
   asking: function() {
 
     if(confirm('Есть ли у вас дополнительный затаботок?')) {
-      let itemIncome = prompt('Какой у вас дополнительный заработок?', 'Шабашка');
+      
+      let itemIncome;
 
+      do { 
+        itemIncome = prompt('Какой у вас дополнительный заработок?');
+        }
+
+      while (!isString(itemIncome)); 
+        
+      
+      
       let cashIncome;
-      while (!isNumber(cashIncome)) {
-        cashIncome = +prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
+
+      do {
+        cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?');
       }
-      appData.income[itemIncome] = cashIncome; //проверено на число!
+      while (!isNumber(cashIncome));
+      
+      appData.income[itemIncome] = +cashIncome;
     }
 
     let addExpenses = prompt('Пересислите возможные расходы через запятую');
     appData.addExpenses = addExpenses.toLowerCase().split(', ');
+    console.log(appData.addExpenses); //join
+
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
+
     for (let i = 0; i < 2; i++) {
       
-      let itemExpenses = prompt('Введите обязательную статью расходов');
-
-      let cashExpenses;
-
-      while (!isNumber(cashExpenses)) {
-        cashExpenses = +prompt('Во сколько это обойдется?');
+      let itemExpenses;
+      while (!isString(itemExpenses)) {
+        itemExpenses = prompt('Введите обязательную статью расходов');
       }
 
-      appData.expenses[itemExpenses] = cashExpenses;
+      let cashExpenses;
+      while (!isNumber(cashExpenses)) {
+        cashExpenses = prompt('Во сколько это обойдется?');
+      }
     }
+    
 
   },
   getExpensesMonth: function() {
     for (let key in appData.expenses) {
-      appData.expensesMonth += +appData.expenses[key];
+      appData.expensesMonth += +appData.expensesMonth;
     }
     console.log ('Расходы на месяц: ' + appData.expensesMonth + ' рублей');
 
@@ -76,8 +95,10 @@ let appData = {
   
   },
   getTargetMonth: function() {
-    appData.period = appData.period;
-    console.log('Цель будет достигнута за: ' +Math.ceil(appData.period)+ ' месяцев');
+    return appData.mission / appData.budgetMonth;
+
+
+    //console.log('Цель будет достигнута за: ' + Math.ceil(appData.period) + ' месяцев');
 
   },
   getAccumulatedMonth: function() {
@@ -110,7 +131,6 @@ let appData = {
   calcSavedMoney: function() {
     return appData.budgetMonth * appData.period;
   }
-  
 };
 appData.asking();
 appData.getExpensesMonth();
@@ -119,20 +139,14 @@ appData.getTargetMonth();
 appData.getStatusIncome();
 appData.getInfoDeposit();
 
-for (let key in appData) {
-console.log('Наша программа включает в себя данные:  ' + key + ' - ' + appData[key]);
-}
+
+console.log(appData.expensesMonth);
 
 
-// 1) Сделать проверку при получении данных:
-//    - наименование дополнительного источника заработка
-//    - сумма дополнительного заработка - cashExpenses - проверено!!!
-//    - ввод статьи обязательных расходов
-//    - годовой процент депозита - percentDeposit - проверено!!!
-//    - сумма депозита - moneyDeposit - проверено!!!
+// for (let key in appData) {
+// console.log('Наша программа включает в себя данные:  ' + key + ' - ' + appData[key]);
+// }
 
-// 2) Возможные расходы (addExpenses) вывести строкой в консоль каждое слово с большой буквы слова разделены запятой и пробелом  (Интернет, Такси, Коммунальные расходы)
+// 2) Возможные расходы (addExpenses) вывести строкой в консоль каждое слово с большой буквы слова разделены запятой и пробелом
 
-//itemExpenses - обязательные статьи расходов
-
-//itemIncome - название допдоходов
+// Пример (Интернет, Такси, Коммунальные расходы)
