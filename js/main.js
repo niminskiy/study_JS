@@ -12,7 +12,7 @@ let money,
   start = function() {
   
   do {
-    money = prompt('Ваш месячный доход?');
+    money = prompt('Ваш месячный доход?', 40000);
   }
   while (isNaN(money) || money === '' || money === null);
 };
@@ -42,20 +42,20 @@ let appData = {
       
       let itemIncome;
       do { 
-        itemIncome = prompt('Какой у вас дополнительный заработок?');
+        itemIncome = prompt('Какой у вас дополнительный заработок?', 'шабашка');
       }
       while (!isString(itemIncome));
 
       let cashIncome;
       do {
-        cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?');
+        cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
       }
       while (!isNumber(cashIncome));
       
       appData.income[itemIncome] = +cashIncome;
     }
 
-    let addExpenses = prompt('Пересислите возможные расходы через запятую');
+    let addExpenses = prompt('Перечислите возможные расходы через запятую');
     appData.addExpenses = addExpenses.toLowerCase().split(', ');
 
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
@@ -148,20 +148,29 @@ appData.getInfoDeposit();
 
 
 
-for (let key in appData.expenses) {
-  console.log('Расходы на месяц: ' + key + ' - ' + appData.expenses[key]);
-}
+// for (let key in appData.expenses) {
+//   console.log('Расходы на месяц: ' + key + ' - ' + appData.expenses[key]);
+// }
 
 console.log(appData.expenses);
 
+//console.log('Пример: ' + appData.addExpenses);
 
-console.log('Пример: ' + appData.addExpenses);
-//let addExpenses = [];
+appData.addExpenses.forEach(function(item) {
+  console.log(item[0].toUpperCase() + item.slice(1));
+  
+});
 
-function ucFirst(str) {
-  return str[0].toUpperCase() + str.slice(1);
-}
-console.log(ucFirst('вася'));
+console.log('Пример: ' + appData.addExpenses.join(' ,'));
+
+// function ucFirst(str) {
+//   return str[0].toUpperCase() + str.slice(1);
+// }
+// console.log(ucFirst('вася'));
+
+// for (let i = 0; i < appData.addExpenses.length; i++) {
+//   console.log(appData.addExpenses);
+// }
 
 // 2) Возможные расходы (addExpenses) вывести строкой в консоль каждое слово с большой буквы слова разделены запятой и пробелом
 
@@ -173,7 +182,7 @@ console.log(ucFirst('вася'));
 
 
 
-
+ 
 
 
 
