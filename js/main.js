@@ -152,20 +152,44 @@ appData.getInfoDeposit();
 //   console.log('Расходы на месяц: ' + key + ' - ' + appData.expenses[key]);
 // }
 
-console.log(appData.expenses);
+/*console.log(appData.expenses);
 
 //console.log('Пример: ' + appData.addExpenses);
 
 appData.addExpenses.forEach(function(item) {
-  console.log(item[0].toUpperCase() + item.slice(1));
-  
+  //return item[0].toUpperCase() + item.slice(1);
+  appData.addExpenses.push(item[0].toUpperCase() + item.slice(1));
 });
+console.log(appData.addExpenses);
+console.log('Пример: ' + appData.addExpenses.join(', '));*/
 
-console.log('Пример: ' + appData.addExpenses.join(' ,'));
+// const myArr = ['первый', 'второй', 'третий'];
+
+// appData.addExpenses.forEach(item => console.log(ucFirst('Пример: ' + appData.addExpenses.join(', '))));
+
+// function ucFirst(string) {
+//     return string.charAt(0).toUpperCase() + string.slice(1);
+// }
+
+
+// let myArr = ['первый', 'второй'];
+
+// myArr.map(item => {
+//  item = item.toString().charAt(0).toUpperCase() + item.slice(1);
+// })
+
+let words = ['первый', 'второй', 'третий'];
+for (let word of appData.addExpenses) {
+    word = word.charAt(0).toUpperCase() + word.substr(1);
+    console.log(word);
+}
+
+
 
 // function ucFirst(str) {
 //   return str[0].toUpperCase() + str.slice(1);
 // }
+
 // console.log(ucFirst('вася'));
 
 // for (let i = 0; i < appData.addExpenses.length; i++) {
