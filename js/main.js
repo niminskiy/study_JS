@@ -1,6 +1,6 @@
 'use strict';
 
-/*let isNumber = function(num) {
+let isNumber = function(num) {
   return !isNaN(parseFloat(num)) && isFinite(num);
 };
 
@@ -132,7 +132,7 @@ appData.getExpensesMonth();
 //appData.getBudget();
 //appData.getTargetMonth();
 appData.getStatusIncome();
-appData.getInfoDeposit();*/
+appData.getInfoDeposit();
 
 
 //console.log('Цель будет достигнута за: ' + Math.ceil(appData.period) + ' месяцев');
@@ -142,15 +142,27 @@ appData.getInfoDeposit();*/
 // console.log('Наша программа включает в себя данные:  ' + key + ' - ' + appData[key]);
 // }
 
-const arr = ['мама', 'папа', 'брат', 'сестра', 'сын', 'дочь'];
+//let addExpenses = ['кино', 'театр', 'дача', 'гараж', 'юбилей', 'фитнес'];
 
-function bigFirst(string) {
-  return string[0].toUpperCase() + string.slice(1);
+function bigFirstLetter(item) {
+  return item[0].toUpperCase() + item.slice(1);
 }
 
-arr.forEach(item => console.log(bigFirst(item)));
+appData.addExpenses = appData.addExpenses.map(bigFirstLetter);
+console.log(appData.addExpenses.join(', '));
 
+//appData.addExpenses.forEach(item => console.log(bigFirstLetter(item)));
 
+//console.log(addExpenses.join(', '));
+
+//console.log(arr.length);
+
+//arr[0] = 'дедушка';
+//arr[1] = 'бабушка';
+
+// for (let i = 0; i < arr.length; i++) {
+//   console.log(arr[i]);
+// }
 
 // for (let key in appData.expenses) {
 //   console.log('Расходы на месяц: ' + key + ' - ' + appData.expenses[key]);
