@@ -142,8 +142,6 @@ appData.getInfoDeposit();
 // console.log('Наша программа включает в себя данные:  ' + key + ' - ' + appData[key]);
 // }
 
-//let addExpenses = ['кино', 'театр', 'дача', 'гараж', 'юбилей', 'фитнес'];
-
 function bigFirstLetter(item) {
   return item[0].toUpperCase() + item.slice(1);
 }
@@ -153,12 +151,9 @@ console.log(appData.addExpenses.join(', '));
 
 //appData.addExpenses.forEach(item => console.log(bigFirstLetter(item)));
 
-//console.log(addExpenses.join(', '));
 
-//console.log(arr.length);
 
-//arr[0] = 'дедушка';
-//arr[1] = 'бабушка';
+
 
 // for (let i = 0; i < arr.length; i++) {
 //   console.log(arr[i]);
@@ -168,39 +163,13 @@ console.log(appData.addExpenses.join(', '));
 //   console.log('Расходы на месяц: ' + key + ' - ' + appData.expenses[key]);
 // }
 
-
-//console.log('Пример: ' + appData.addExpenses);
-
 /*appData.addExpenses.forEach(function(item) {
   item[0].toUpperCase() + item.slice(1);
   console.log(appData.addExpenses.join(', '));
   //appData.addExpenses.push(item[0].toUpperCase() + item.slice(1));
-  //console.log(appData.addExpenses);
-  //console.log('Пример: ' + appData.addExpenses.join(', '));
-});*/
-
+  });*/
 
 // function ucFirst(str) {
 //   return str[0].toUpperCase() + str.slice(1);
 // }
 // console.log(ucFirst('вася'));
-
-// for (let i = 0; i < appData.addExpenses.length; i++) {
-//   console.log(appData.addExpenses);
-// }
-
-// 2) Возможные расходы (addExpenses) вывести строкой в консоль каждое слово с большой буквы слова разделены запятой и пробелом
-
-// Пример (Интернет, Такси, Коммунальные расходы)
-
-
-
-
-
-
-
- 
-
-
-
-
