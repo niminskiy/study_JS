@@ -127,17 +127,8 @@ function bigFirstLetter(item) {
 }
 
 appData.addExpenses = appData.addExpenses.map(bigFirstLetter);
-//console.log(appData.addExpenses.join(", "));
 
-appData.addExpenses.forEach((item) => console.log(bigFirstLetter(item)));
-
-// for (let i = 0; i < arr.length; i++) {
-//   console.log(arr[i]);
-// }
-
-// for (let key in appData.expenses) {
-//   console.log('Расходы на месяц: ' + key + ' - ' + appData.expenses[key]);
-// }
+//appData.addExpenses.forEach((item) => console.log(bigFirstLetter(item)));
 
 appData.addExpenses.forEach(function (item) {
   return item[0].toUpperCase() + item.slice(1);
