@@ -1,17 +1,17 @@
-"use strict";
+'use strict';
 
 let isNumber = function (num) {
   return !isNaN(parseFloat(num)) && isFinite(num);
 };
 
 let isString = function (str) {
-  return typeof str === "string" && str.trim() !== "" && !isNumber(str);
+  return typeof str === 'string' && str.trim() !== '' && !isNumber(str);
 };
 
 let money,
   start = function () {
     do {
-      money = prompt("Ваш месячный доход?", 40000);
+      money = prompt('Ваш месячный доход?', 40000);
     } while (isNaN(money) || money === "" || money === null);
   };
 start();
@@ -30,38 +30,38 @@ let appData = {
   moneyDeposit: 0,
   period: 3,
   mission: function () {
-    prompt("Сколько вы хотите накопить денег?");
-    console.log("Цель накопить " + appData.mission + " рублей");
+    prompt('Сколько вы хотите накопить денег?');
+    console.log('Цель накопить ' + appData.mission + ' рублей');
   },
   asking: function () {
-    if (confirm("Есть ли у вас дополнительный затаботок?")) {
+    if (confirm('Есть ли у вас дополнительный затаботок?')) {
       let itemIncome;
       do {
-        itemIncome = prompt("Какой у вас дополнительный заработок?", "шабашка");
+        itemIncome = prompt('Какой у вас дополнительный заработок?', 'шабашка');
       } while (!isString(itemIncome));
 
       let cashIncome;
       do {
-        cashIncome = prompt("Сколько в месяц вы на этом зарабатываете?", 10000);
+        cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
       } while (!isNumber(cashIncome));
 
       appData.income[itemIncome] = +cashIncome;
     }
 
-    let addExpenses = prompt("Перечислите возможные расходы через запятую");
-    appData.addExpenses = addExpenses.toLowerCase().split(", ");
+    let addExpenses = prompt('Перечислите возможные расходы через запятую', 'кино, театр, дача, гараж, музей, пляж');
+    appData.addExpenses = addExpenses.toLowerCase().split(', ');
 
-    appData.deposit = confirm("Есть ли у вас депозит в банке?");
+    appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
     for (let i = 0; i < 2; i++) {
       let itemExpenses;
       do {
-        itemExpenses = prompt("Введите обязательную статью расходов");
+        itemExpenses = prompt('Введите обязательную статью расходов');
       } while (!isString(itemExpenses));
 
       let cashExpenses;
       do {
-        cashExpenses = prompt("Во сколько это обойдется?");
+        cashExpenses = prompt('Во сколько это обойдется?');
       } while (!isNumber(cashExpenses));
 
       appData.expenses[itemExpenses] = cashExpenses;
@@ -72,7 +72,7 @@ let appData = {
     for (let key in appData.expenses) {
       appData.expensesMonth += +appData.expenses[key];
     }
-    console.log("Расходы на месяц: " + appData.expensesMonth + " рублей");
+    console.log('Расходы на месяц: ' + appData.expensesMonth + ' рублей');
   },
   getBudget: function () {
     appData.budgetMonth = appData.budget - appData.expensesMonth;
@@ -85,23 +85,23 @@ let appData = {
   getAccumulatedMonth: function () {},
   getStatusIncome: function () {
     if (appData.budgetDay >= 1200) {
-      console.log("У вас высокий уровень дохода");
+      console.log('У вас высокий уровень дохода');
     } else if (appData.budgetDay >= 600) {
-      console.log("У вас средний уровень дохода");
+      console.log('У вас средний уровень доход');
     } else if (appData.budgetDay < 600) {
-      console.log("К сожалению у вас уровень дохода ниже среднего");
+      console.log('К сожалению у вас уровень дохода ниже среднего');
     } else if (appData.budgetDay <= 0) {
-      console.log("Что-то пошло не так");
+      console.log('Что-то пошло не так');
     }
   },
   getInfoDeposit: function () {
     if (appData.deposit) {
       do {
-        appData.percentDeposit = +prompt("Какой годовой процент?", 10);
+        appData.percentDeposit = +prompt('Какой годовой процент?', 10);
       } while (!isNumber(appData.percentDeposit));
 
       do {
-        appData.moneyDeposit = +prompt("Какая сумма заложена?", 10000);
+        appData.moneyDeposit = +prompt('Какая сумма заложена?', 10000);
       } while (!isNumber(appData.moneyDeposit));
     }
   },
@@ -127,7 +127,7 @@ function bigFirstLetter(item) {
 }
 
 appData.addExpenses = appData.addExpenses.map(bigFirstLetter);
-console.log(appData.addExpenses.join(", "));
+console.log(appData.addExpenses.join(', '));
 
 //appData.addExpenses.forEach(item => console.log(bigFirstLetter(item)));
 
