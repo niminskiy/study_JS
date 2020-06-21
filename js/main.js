@@ -5,17 +5,16 @@ let isNumber = function(num) {
 };
 
 let isString = function(str) {
-  return str.trim() !== '' && !isNumber(str);
+  return typeof str === 'string' && str.trim() !== '' && !isNumber(str);
 };
 
-let money;
-
-let start = function() {
-  money = prompt('Ваш месячный доход?');
-
-  while (!isNumber(money)) {
-    money = prompt('Ваш месячный доход?');
+let money,
+  start = function() {
+  
+  do {
+    money = prompt('Ваш месячный доход?', 40000);
   }
+  while (isNaN(money) || money === '' || money === null);
 };
 start();
 
@@ -42,49 +41,47 @@ let appData = {
     if(confirm('Есть ли у вас дополнительный затаботок?')) {
       
       let itemIncome;
-
       do { 
-        itemIncome = prompt('Какой у вас дополнительный заработок?');
-        }
+        itemIncome = prompt('Какой у вас дополнительный заработок?', 'шабашка');
+      }
+      while (!isString(itemIncome));
 
-      while (!isString(itemIncome)); 
-        
-      
-      
       let cashIncome;
-
       do {
-        cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?');
+        cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
       }
       while (!isNumber(cashIncome));
       
       appData.income[itemIncome] = +cashIncome;
     }
 
-    let addExpenses = prompt('Пересислите возможные расходы через запятую');
+    let addExpenses = prompt('Перечислите возможные расходы через запятую');
     appData.addExpenses = addExpenses.toLowerCase().split(', ');
-    console.log(appData.addExpenses); //join
 
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
     for (let i = 0; i < 2; i++) {
       
       let itemExpenses;
-      while (!isString(itemExpenses)) {
+      do {
         itemExpenses = prompt('Введите обязательную статью расходов');
       }
+      while (!isString(itemExpenses));
 
       let cashExpenses;
-      while (!isNumber(cashExpenses)) {
+      do {
         cashExpenses = prompt('Во сколько это обойдется?');
       }
-    }
-    
+      while (!isNumber(cashExpenses));
 
+      appData.expenses[itemExpenses] = cashExpenses;
+    }
   },
+
   getExpensesMonth: function() {
+
     for (let key in appData.expenses) {
-      appData.expensesMonth += +appData.expensesMonth;
+      appData.expensesMonth += +appData.expenses[key];
     }
     console.log ('Расходы на месяц: ' + appData.expensesMonth + ' рублей');
 
@@ -97,10 +94,8 @@ let appData = {
   getTargetMonth: function() {
     return appData.mission / appData.budgetMonth;
 
-
-    //console.log('Цель будет достигнута за: ' + Math.ceil(appData.period) + ' месяцев');
-
   },
+
   getAccumulatedMonth: function() {
 
   },
@@ -117,15 +112,15 @@ let appData = {
   },
   getInfoDeposit: function() {
     if(appData.deposit) {
-      appData.percentDeposit = prompt('Какой годовой процент?', 10);
-      while (!isNumber(appData.percentDeposit)) {
+      do {
         appData.percentDeposit = +prompt('Какой годовой процент?', 10);
       }
+      while (!isNumber(appData.percentDeposit));
 
-      appData.moneyDeposit = prompt('Какая сумма заложена?', 10000);
-      while (!isNumber(appData.moneyDeposit)) {
+      do {
         appData.moneyDeposit = +prompt('Какая сумма заложена?', 10000);
       }
+      while (!isNumber(appData.moneyDeposit));
     }
   },
   calcSavedMoney: function() {
@@ -134,19 +129,45 @@ let appData = {
 };
 appData.asking();
 appData.getExpensesMonth();
-appData.getBudget();
-appData.getTargetMonth();
+//appData.getBudget();
+//appData.getTargetMonth();
 appData.getStatusIncome();
 appData.getInfoDeposit();
 
 
-console.log(appData.expensesMonth);
+//console.log('Цель будет достигнута за: ' + Math.ceil(appData.period) + ' месяцев');
 
 
 // for (let key in appData) {
 // console.log('Наша программа включает в себя данные:  ' + key + ' - ' + appData[key]);
 // }
 
-// 2) Возможные расходы (addExpenses) вывести строкой в консоль каждое слово с большой буквы слова разделены запятой и пробелом
+function bigFirstLetter(item) {
+  return item[0].toUpperCase() + item.slice(1);
+}
 
-// Пример (Интернет, Такси, Коммунальные расходы)
+appData.addExpenses = appData.addExpenses.map(bigFirstLetter);
+console.log(appData.addExpenses.join(', '));
+
+//appData.addExpenses.forEach(item => console.log(bigFirstLetter(item)));
+
+
+
+
+
+// for (let i = 0; i < arr.length; i++) {
+//   console.log(arr[i]);
+// }
+
+// for (let key in appData.expenses) {
+//   console.log('Расходы на месяц: ' + key + ' - ' + appData.expenses[key]);
+// }
+
+/*appData.addExpenses.forEach(function(item) {
+  item[0].toUpperCase() + item.slice(1);
+  console.log(appData.addExpenses.join(', '));*/
+
+// function ucFirst(str) {
+//   return str[0].toUpperCase() + str.slice(1);
+// }
+// console.log(ucFirst('вася'));
