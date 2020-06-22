@@ -12,7 +12,7 @@ let money,
   start = function () {
     do {
       money = prompt('Ваш месячный доход?', 40000);
-    } while (isNaN(money) || money === "" || money === null);
+    } while (isNaN(money) || money === '' || money === null);
   };
 start();
 
