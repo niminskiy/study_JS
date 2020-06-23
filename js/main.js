@@ -1,6 +1,6 @@
 'use strict';
 
-let isNumber = function (num) {
+/*let isNumber = function (num) {
   return !isNaN(parseFloat(num)) && isFinite(num);
 };
 
@@ -146,4 +146,55 @@ console.log(appData.addExpenses.join(', '));
 // function ucFirst(str) {
 //   return str[0].toUpperCase() + str.slice(1);
 // }
-// console.log(ucFirst('вася'));
+// console.log(ucFirst('вася'));*/
+
+
+const btnStart = document.getElementById('start');
+console.log(btnStart);
+
+
+const btnPlusIncomeAdd = document.getElementsByTagName('button')[0];
+console.log(btnPlusIncomeAdd);
+
+
+const btnPlusExpensesAdd = document.getElementsByTagName('button')[1];
+console.log(btnPlusExpensesAdd);
+
+
+const checkBox = document.querySelector('#deposit-check');
+console.log(checkBox);
+
+
+//e.	Каждый элемент в правой части программы через класс, которые имеют в имени класса "-value", начиная с class="budget_day-value" и заканчивая class="target_month-value"> семь штук.
+
+
+let salaryAmount = document.querySelector('.salary-amount');
+console.log(salaryAmount);
+
+
+let incomeTitle = document.querySelector('.income-title');
+console.log(incomeTitle);
+
+
+let incomeAmount = document.querySelector('.income-amount');
+console.log(incomeAmount);
+
+
+let additionalIncomeItem = document.querySelector('.additional_income-item');
+console.log(additionalIncomeItem);
+
+
+let expensesTitle = document.querySelector('.expenses-title');
+console.log(expensesTitle);
+
+
+let expensesAmount = document.querySelector('.expenses-amount');
+console.log(expensesAmount);
+
+
+let additionalExpensesItem = document.querySelector('.additional_expenses-item');
+console.log(additionalExpensesItem);
+
+
+let periodSelect = document.querySelector('.period-select');
+console.log(periodSelect);
