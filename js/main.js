@@ -6,15 +6,34 @@
 
 let isString = function (str) {
   return typeof str === 'string' && str.trim() !== '' && !isNumber(str);
-};
+};*/
 
-let money,
-  start = function () {
-    do {
-      money = prompt('Ваш месячный доход?', 40000);
-    } while (isNaN(money) || money === '' || money === null);
-  };
-start();
+let start = document.getElementById('start'),
+  btnPlus = document.getElementsByTagName('button'),
+  incomePlus = btnPlus[0],
+  expensesPlus = btnPlus[1],
+  additionalIncomeItem = document.querySelectorAll('.additional_income-item'),
+  depositCheck = document.querySelector('#deposit-check'),
+  budgetDayValue = document.getElementsByClassName('budget_day_value')[0],
+  budgetMonthValue = document.getElementsByClassName('buget_month-value')[0],
+  expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0],
+  getAccumulatedMonthValue = document.getElementsByClassName('accumulated_month-value')[0],
+  additionalIncomeValue = document.getElementsByClassName('additional_income_value')[0],
+  additionalExpensesValue = document.getElementsByClassName('additional_expenses-value'),
+  incomePeriodValue = document.getElementsByClassName('income_period-value')[0],
+  targetMonthValue = document.getElementsByClassName('target_month-value')[0],
+  salaryAmount = document.querySelector('.salary-amount'),
+  incomeTitle = document.querySelector('.income-title'),
+  incomeAmount = document.querySelector('.income-amount'),
+  expensesTitle = document.querySelector('.expenses-title'),
+  expensesAmount = document.querySelector('.expenses-amount'),
+  additionalExpenses = document.querySelector('.additional_expenses'),
+  periodSelect = document.querySelector('.period-select');
+
+  // btnPlusExpensesAdd = document.getElementsByTagName('button')[1],//
+  // checkBox = document.querySelector('#deposit-check'),//
+
+/*let money;
 
 let appData = {
   budget: money,
@@ -23,12 +42,18 @@ let appData = {
   income: {},
   addIncome: [],
   expenses: {},
-  addExpenses: [],
   expensesMonth: 0,
+  addExpenses: [],
   deposit: false,
   percentDeposit: 0,
   moneyDeposit: 0,
+  mission: 50000,
   period: 3,
+  start: function () {
+    do {
+      money = prompt('Ваш месячный доход?', 50000);
+    } while (isNaN(money) || money === '' || money === null);
+  },
   mission: function () {
     prompt('Сколько вы хотите накопить денег?');
     console.log('Цель накопить ' + appData.mission + ' рублей');
@@ -147,54 +172,3 @@ console.log(appData.addExpenses.join(', '));
 //   return str[0].toUpperCase() + str.slice(1);
 // }
 // console.log(ucFirst('вася'));*/
-
-
-const btnStart = document.getElementById('start');
-console.log(btnStart);
-
-
-const btnPlusIncomeAdd = document.getElementsByTagName('button')[0];
-console.log(btnPlusIncomeAdd);
-
-
-const btnPlusExpensesAdd = document.getElementsByTagName('button')[1];
-console.log(btnPlusExpensesAdd);
-
-
-const checkBox = document.querySelector('#deposit-check');
-console.log(checkBox);
-
-
-//e.	Каждый элемент в правой части программы через класс, которые имеют в имени класса "-value", начиная с class="budget_day-value" и заканчивая class="target_month-value"> семь штук.
-
-
-let salaryAmount = document.querySelector('.salary-amount');
-console.log(salaryAmount);
-
-
-let incomeTitle = document.querySelector('.income-title');
-console.log(incomeTitle);
-
-
-let incomeAmount = document.querySelector('.income-amount');
-console.log(incomeAmount);
-
-
-let additionalIncomeItem = document.querySelector('.additional_income-item');
-console.log(additionalIncomeItem);
-
-
-let expensesTitle = document.querySelector('.expenses-title');
-console.log(expensesTitle);
-
-
-let expensesAmount = document.querySelector('.expenses-amount');
-console.log(expensesAmount);
-
-
-let additionalExpensesItem = document.querySelector('.additional_expenses-item');
-console.log(additionalExpensesItem);
-
-
-let periodSelect = document.querySelector('.period-select');
-console.log(periodSelect);
