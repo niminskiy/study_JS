@@ -62,6 +62,8 @@ let appData = {
     appData.getAddExpenses();
     appData.getAddIncome();
     appData.getBudget();
+    appData.calcPeriod();
+    appData.getTargetMonth();
 
     appData.showResult();
   },
@@ -140,6 +142,8 @@ let appData = {
   },
   getTargetMonth: function () {
     return targetAmount.value / appData.budgetMonth;
+
+
   },
   getStatusIncome: function () {
     if (appData.budgetDay >= 1200) {
