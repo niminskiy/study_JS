@@ -31,7 +31,8 @@ let start = document.getElementById('start'),
   periodSelect = document.querySelector('.period-select'),
   additionalExpensesItem = document.querySelector('.additional_expenses-item'),
   targetAmount = document.querySelector('.target-amount'),
-  incomeItems = document.querySelectorAll('.income-items');
+  incomeItems = document.querySelectorAll('.income-items'),
+  periodAmount = document.querySelector('.period-amount');
 
 let appData = {
   budget: 0,
@@ -61,6 +62,7 @@ let appData = {
     appData.getAddExpenses();
     appData.getAddIncome();
     appData.getBudget();
+
     appData.showResult();
   },
   showResult: function () {
@@ -165,14 +167,16 @@ let appData = {
   },
   calcPeriod: function () {
     return appData.budgetMonth * periodSelect.value;
+  },
+  showOutputPeriod: function () {
+    periodAmount.innerHTML = periodSelect.value;
   }
 };
 
 start.addEventListener('click', appData.start);
-
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
-
+periodSelect.addEventListener('change', appData.showOutputPeriod);
 
 // if (appData.getTargetMonth() > 0) {
 //   console.log('Цель будет достигнута за ' + Math.ceil(appData.getTargetMonth()) + ' месяцев');
