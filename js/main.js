@@ -24,13 +24,14 @@ let start = document.getElementById('start'),
   targetMonthValue = document.getElementsByClassName('target_month-value')[0],
   salaryAmount = document.querySelector('.salary-amount'),
   incomeTitle = document.querySelector('.income-title'),
+  incomeAmount = document.querySelector('.income-amount'),
   expensesTitle = document.querySelector('.expenses-title'),
   expensesItems = document.querySelectorAll('.expenses-items'),
   additionalExpenses = document.querySelector('.additional_expenses'),
   periodSelect = document.querySelector('.period-select'),
   additionalExpensesItem = document.querySelector('.additional_expenses-item'),
   targetAmount = document.querySelector('.target-amount'),
-  incomeItem = document.querySelectorAll('.income-items');
+  incomeItems = document.querySelectorAll('.income-items');
 
 let appData = {
   budget: 0,
@@ -88,13 +89,22 @@ let appData = {
       }
     });
   },
-  getIncome: function () {
-    if (confirm('Есть ли у вас дополнительный затаботок?')) {
-      let itemIncome = prompt('Какой у вас дополнительный заработок?', 'шабашка');
-      let cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
-      appData.income[itemIncome] = +cashIncome;
+  addIncomeBlock: function () {
+    let cloneIncomeItem = incomeItems[0].cloneNode(true);
+    incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
+    incomeItems = document.querySelectorAll('.income-items');
+    if (incomeItems.length === 3) {
+      incomePlus.style.display = 'none';
     }
-
+  },
+  getIncome: function () {
+    incomeItems.forEach(function (item) {
+      let incomeTitle = item.querySelector('.income-title').value;
+      let incomeAmount = item.querySelector('.income-amount').value;
+      if (incomeTitle !== '' && incomeAmount !== '') {
+        appData.income[incomeTitle] = incomeAmount;
+      }
+    });
     for (let key in appData.income) {
       appData.incomeMonth += +appData.income[key];
     }
@@ -160,6 +170,7 @@ let appData = {
 
 start.addEventListener('click', appData.start);
 
+incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 
 
